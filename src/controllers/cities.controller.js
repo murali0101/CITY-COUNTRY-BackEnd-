@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get("/", async (req, res) => {
     try {
-        const city = await City.find().populate({path:"countryId",select:{_id:0}}).lean().exec()
+        const city = await City.find().populate({path:"countryId",select:{}}).lean().exec()
         return res.status(200).send(city)
     } catch (error) {
         return res.status(400).send({ error: error.message })
